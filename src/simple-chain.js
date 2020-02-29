@@ -1,23 +1,44 @@
 const chainMaker = {
-  getLength() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+
+'cain': [],
+
+getLength() {
+    return this.cain.length;
   },
   addLink(value) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if (value == undefined) {
+      this.cain.push();
+    }
+    this.cain.push(value);
+    return this;
   },
   removeLink(position) {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    if (position <= 0 || typeof position != 'number' || position > this.cain.length) {
+      this.cain = [];
+      throw Error;
+    }
+    this.cain.splice(position - 1, 1);
+    return this;
   },
   reverseChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    this.cain.reverse();
+    return this;
   },
   finishChain() {
-    throw 'Not implemented';
-    // remove line with error and write your code here
+    let result;
+    if (this.cain.length == 1) {
+      this.cain[0] = '( ' + this.cain[0] + ' )'
+    } else {
+      this.cain[0] = '( ' + this.cain[0] + ' )~';
+      for (let i = 1; i < this.cain.length - 1; i++) {
+        this.cain[i] = '~( ' + this.cain[i] + ' )~';
+      }
+      this.cain[this.cain.length - 1] = '~( ' + this.cain[this.cain.length - 1] + ' )';
+    }  
+    result = this.cain.join('');
+    this.cain=[];
+    return result;
+
   }
 };
 
